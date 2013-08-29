@@ -1,0 +1,11 @@
+<h1>Listing Pages</h1>
+<dl>
+<% @pages.each do |page| %>
+  <dt><%= link_to page.title, page_path(page) %></dt>
+  <dd><%= page.revision.text.slice(0,200) %></dd>
+<% end %>
+</dl>
+
+<br />
+ 
+<%= link_to "New page", new_page_path(:title => @term) %>

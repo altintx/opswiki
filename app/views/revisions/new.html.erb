@@ -1,0 +1,20 @@
+<% if @revision.parent_revision.page.revision %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#"><%= @revision.parent_revision.page.title %></a>
+    <ul class="nav">
+      <li><%= link_to "Article", page_path(@revision.parent_revision.page) %></li>
+      <li class="active"><a href="#">Edit</a></li>
+      <li><%= link_to "History", revisions_path(:page => @revision.parent_revision.page) %></li>
+    </ul>
+  </div>
+</div>
+<% end %>
+<%= form_for @revision do |form| %>
+	<%= form.text_area :text %>
+	<%= form.hidden_field :page_id %>
+	<%= form.hidden_field :parent_revision_id %><br />
+	<%= form.label "Changes" %>
+	<%= form.text_field :changelog %>
+	<%= form.submit "Save" %>
+<% end %>

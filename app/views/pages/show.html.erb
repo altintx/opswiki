@@ -1,0 +1,30 @@
+<% if @page.revision %>
+	<% if @page.namespace.allowed current_user, "R" %>
+		<% if @page.revision %>
+			<div class="navbar">
+				<div class="navbar-inner">
+					<a class="brand" href="#"><%= @page.title %></a>
+					<ul class="nav">
+						<li class="active"><a href="#">Article</a></li>
+						<% if @page.namespace.allowed current_user, "U" %>
+						<li><%= link_to "Edit", new_revision_path(:revision => @page.revision)  %></li>
+						<% end %>
+						<li><%= link_to "History", revisions_path(:page => @page) %></li>
+					</ul>
+				</div>
+			</div>
+		<% end %>
+		<%= @wiki.to_html(:noedit => true).html_safe  %>
+	<% else %>
+		<%= render partial: "shared/denied", locals: { namespace: @page.namespace } %>
+	<% end %>
+<% else %>
+	<div class="navbar">
+		<div class="navbar-inner">
+			<a class="brand" href="#"><%= @page.title %></a>
+			<ul class="nav">
+			</ul>
+		</div>
+	</div>
+	<%= @wiki.to_html(:noedit => true).html_safe %>
+<% end %>

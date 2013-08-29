@@ -1,0 +1,9 @@
+<div class="alert alert-error">Access denied.
+<button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+<% if current_user %>
+<p>You're logged in, but don't have access to this. You can talk to <a href="mailto:<%=namespace.support %>">support for <%=namespace.name %></a> to see if they'll give you access.</p>
+<% else %>
+<p>You're not logged in and anynonous users don't have access to this.</p>
+<p><%= link_to "Log in", new_user_session_path() %> and try again.</p>
+<% end %>

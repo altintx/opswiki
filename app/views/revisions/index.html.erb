@@ -1,0 +1,35 @@
+<% if @page.revision %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#"><%= @page.title %></a>
+    <ul class="nav">
+      <li><%= link_to "Article", page_path(@page) %></li>
+      <li><a href="#" onclick="alert('Can\'t edit from History');return false;">Edit</a></li>
+      <li class="active"><a href="#">History</a></li>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+<%= form_for @page do |form| %> 
+<table>
+  <tr>
+    <th class="span5">Changes</th>
+    <th class="span2">Editor</th>
+    <th class="span1">When</th>
+  </tr>
+ 
+
+<% @revisions.each do |revision| %>
+  <tr>
+    <td><% if @page.namespace.allowed current_user, "U" %><%= form.radio_button("revision_id", revision.id) %><% end %> <%= revision.changelog %></td>
+    <td><%= revision.ldap_editor %></td>
+    <td><%= link_to time_ago_in_words(revision.created_at), revision_path(revision) %></td>
+  </tr>
+<% end %>
+</table>
+<hr/>
+<% if @page.namespace.allowed current_user, "U" %>
+<%= form.submit("Use this Revision") %>
+<% end %>
+<% end %>

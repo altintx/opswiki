@@ -1,0 +1,11 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#"><%= @revision.page.title %></a>
+    <ul class="nav">
+      <li><%= link_to "Article", page_path(@revision.page) %></li>
+      <li><%= link_to "Edit", new_revision_path(:revision => @revision) %></li>
+      <li class="active"><%= link_to "History", revisions_path(:page => @revision.page) %></li>
+    </ul>
+  </div>
+</div>
+<%= @wiki.to_html(:noedit => true).html_safe %>

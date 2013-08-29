@@ -1,0 +1,10 @@
+<%= form_for @permission do |form| %>
+	<label><%= @permission.model %>: <%= @permission.fk %></label>
+	<%= form.label :ldap_user %>
+  <%= form.text_field :ldap_user %><br/>
+  <%= form.hidden_field :model %><br/>
+  <%= form.hidden_field :fk %><br/>
+  <%= form.label :ability %><br />
+  <%= form.text_field :ability %><br/>
+  <%= form.submit %>
+<% end %>

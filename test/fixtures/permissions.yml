@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ldap_user: MyString
+  model: MyString
+  fk: 1
+  ability: MyString
+
+two:
+  ldap_user: MyString
+  model: MyString
+  fk: 1
+  ability: MyString

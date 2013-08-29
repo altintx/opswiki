@@ -1,0 +1,5 @@
+<%= form_for @page do |form| %>
+  <%= form.text_field :title %><br>
+  <%= form.select :namespace_id, @namespaces.collect {|ns| [ns.name, ns.id] } %><br>
+  <%= form.submit %>
+<% end %>

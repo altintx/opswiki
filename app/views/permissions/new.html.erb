@@ -1,0 +1,8 @@
+<%= form_for @permission do |form| %>
+	<%= form.label :ldap_user %>
+  <%= form.text_field :ldap_user %><br/>
+  <%= select_tag :namespace_id, (options_for_select @namespaces.collect {|ns| [ns.name, ns.id]}) %>
+  <%= form.label :ability %><br />
+  <%= form.text_field :ability %><br/>
+  <%= form.submit %>
+<% end %>

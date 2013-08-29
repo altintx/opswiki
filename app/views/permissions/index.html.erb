@@ -1,0 +1,26 @@
+<h1>Listing Permissions</h1>
+ 
+<table>
+  <tr>
+    <th class="span2">User</th>
+    <th class="span2">Resource</th>
+    <th class="span1">Ability</th>
+    <th class="span1"></th>
+    <th class="span1"></th>
+  </tr>
+ 
+<% @permissions.each do |permission| %>
+  <tr>
+    <td><%= permission.ldap_user %></td>
+    <td><%= permission.model %> <%= permission.fk %></td>
+    <td><%= permission.ability %></td>
+    <td><%= link_to "Edit", edit_permission_path(permission) %></td>
+    <td><%= link_to "Remove", permission, method: :delete, data: { confirm: "Are you sure?" } %></td>
+  </tr>
+<% end %>
+</table>
+ 
+<br />
+ 
+<%= link_to "New permission", new_permission_path %>
+
